@@ -11,13 +11,18 @@ $(document).ready(function () {
     }, 5000);
   });
 
+
   function hourUpdater() {
-    var currentHour = dayjs().hour();
+    var currentHour = dayjs().hour();  
+    // console log confirming that this is a variable 
+    console.log(currentHour); 
     $('.time-block').each(function () {
       var blockHour = parseInt($(this).attr('id').split('-')[1]);
+    // console log to confirm this value 
+      console.log(blockHour);
       if (blockHour < currentHour) {
         $(this).addClass('past');
-      } else if (blockHour !== currentHour) {
+      } else if (blockHour === currentHour) {
         $(this).removeClass('past');
         $(this).addClass('present');
       } else {
@@ -30,7 +35,7 @@ $(document).ready(function () {
 
   hourUpdater();
 
-  setInterval(hourUpdater, 15000);
+  setInterval(hourUpdater, 65000);
 
   $('#hour-9 .description').val(localStorage.getItem('hour-9'));
   $('#hour-10 .description').val(localStorage.getItem('hour-10'));
