@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $(".saveBtn").on("click", function () {
     var value = $(this).siblings(".description").val();
-    var time = $(this).parent().attribute("id");
+    var time = $(this).parent().attr("id");
 
     localStorage.setItem(time, value);
 
@@ -11,12 +11,12 @@ $(document).ready(function () {
     }, 5000);
   });
 
-  function hourUpdater() {
+  function update() {
     var current = dayjs().hour();
     // console log confirming that this is a variable
     console.log(current);
     $(".time-block").each(function () {
-      var block = parseInt($(this).attribute("id").split("-")[1]);
+      var block = parseInt($(this).attr("id").split("-")[1]);
       // console log to confirm this value
       console.log(block);
       if (block < current) {
@@ -32,9 +32,9 @@ $(document).ready(function () {
     });
   }
 
-  hourUpdater();
+  update();
 
-  setInterval(hourUpdater, 65000);
+  setInterval(update, 65000);
 
   $("#hour-9.description").val(localStorage.getItem("hour-9"));
   $("#hour-10.description").val(localStorage.getItem("hour-10"));
@@ -46,5 +46,5 @@ $(document).ready(function () {
   $("#hour-16.description").val(localStorage.getItem("hour-16"));
   $("#hour-17.description").val(localStorage.getItem("hour-17"));
 
-  $("#currentDay").text(dayjs().format("dddd, MMMM D, YYYY"));
+  $("#currentDay").text(dayjs().format("dd, MM / D / YYYY"));
 });
